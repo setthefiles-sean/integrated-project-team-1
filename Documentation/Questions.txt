@@ -1,0 +1,40 @@
+Q:  Do you have a style guide for your company's branding?
+    If No:  what general *vibe* would you like us to follow for the interface?
+
+A:  
+
+Q:  What are your expectations for post launch support?
+
+A:  
+
+Q:  Are there any features not outlined in your briefing that you've been thinking of/may want to implement later?
+
+A:  
+
+Q:  What information would you like to be available in the reports that the app will generate?
+
+A:  
+
+Q:  What type of files must an employee be able to upload (JPEG, PDF, etc), and is there a maximum file size that can be uploaded?
+
+A:
+
+Q:  Does the system need to track every change made to a claim?
+
+A:  
+
+Q:  What specific claim types should be available for selection in the menu? (Travel, Meals, Mileage)\
+
+A:  
+
+Q:  Does the system need to handle different types of currency, or is one ok for this project?
+
+A:  
+
+Q:  For mobile users, will there be any functionality for uploading claims and reciepts with their phone camera, or is mobile simply just for checking their status?
+
+A:  
+
+Q:  Should the system retain all claim data, or archive/delete it after a certian time?
+
+A:  
