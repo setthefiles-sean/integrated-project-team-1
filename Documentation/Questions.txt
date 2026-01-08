@@ -1,40 +1,53 @@
 Q:  Do you have a style guide for your company's branding?
     If No:  what general *vibe* would you like us to follow for the interface?
 
-A:  
+A:  very corporate, but there is a company logo that we can follow for the scheme.
+
 
 Q:  What are your expectations for post launch support?
 
-A:  
+A:  out of the box, so user friendly/experience that we never have to return and fix things.
+
 
 Q:  Are there any features not outlined in your briefing that you've been thinking of/may want to implement later?
 
-A:  
+A:  no feature creep.
+
 
 Q:  What information would you like to be available in the reports that the app will generate?
 
-A:  
+A:  reports can only be viewed by admins. In the report dashboard, categories for different claims can be viewed with either a bar or pie chart to view spendings.
+
 
 Q:  What type of files must an employee be able to upload (JPEG, PDF, etc), and is there a maximum file size that can be uploaded?
 
-A:
+A:  Only JPG or PNG, only images. file size un-important, appropriate.
 
-Q:  Does the system need to track every change made to a claim?
 
-A:  
-
-Q:  What specific claim types should be available for selection in the menu? (Travel, Meals, Mileage)\
+Q:  Does the system need to track every change made to a claim? And can a claim be updated by an employee?
 
 A:  
+
+
+Q:  What specific claim types should be available for selection in the menu? (Travel, Meals, Mileage)
+
+A:  categories, not types. Date, Category (food, travel (start/end location, milage[km]), lodging, medical expense [boolean (face-hugger)], [default categories]), description, amount, reciept image. Admin can add and delete new categories, but defaults cannot be altered.
+
 
 Q:  Does the system need to handle different types of currency, or is one ok for this project?
 
-A:  
+A:  one (dollars) is fine.
+
 
 Q:  For mobile users, will there be any functionality for uploading claims and reciepts with their phone camera, or is mobile simply just for checking their status?
 
-A:  
+A:  no camera features neccessary, but fancy.
+
 
 Q:  Should the system retain all claim data, or archive/delete it after a certian time?
 
-A:  
+A:  everything stays. Admins see ALL claims, employees only see their own. regardless of user, you can filter the claims list to see approved/denied, pending, and potentially category. order of claims should be newest to oldest upon opening the dashboard.
+
+side notes: Admins upon approving or denying a claim can add a comment. For reports, they could be downloadable as a CSV file (spreadsheet) not required. 3 second load time. 
+
+Project goals: secure web app, admin dashboard (managing employees, reviewing claims, viewing reports), deployment to a cloud service.
