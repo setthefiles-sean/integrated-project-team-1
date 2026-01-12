@@ -1,0 +1,76 @@
+amount of money spent on each category
+should spit out a graph
+bar or piechart
+
+filter by date range
+
+employee should be able to upload a jpeg or png image of a reciept
+
+nice to have camera ability to upload jpeg directly - NOT REQUIRED
+
+once a claim is submitted there is 3 states:
+	 - pending just submitted
+	 - approved
+	 - denied
+ 
+ if a claim is denied, the employee needs to submit a new claim - NO EDITS
+ 
+ employee NOR admins cannot edit or delete a claim
+ 
+ admins can submit a claim on behalf of an employee
+ 
+ the employee logs in to see the status of their claims
+ 
+ the adminstrators can create and remove employee accounts
+ 
+ no register page for admins nor employees
+ 
+ employee user structure:
+ 	- first name
+ 	- last name
+ 	- email
+ 	- password
+ 	
+all claims require a date, category, description, amount and receipt image
+
+claim categories:
+	default: 
+		- food
+		- travel:
+			- start location
+			- end location
+			- estimated mileage in KM
+		- lodging
+		- medical:
+			- due to face hugger exposure? BOOL
+	
+admins can create and delete NEW categories beyond the default ones. they CANNOT delete the default ones.
+
+category cannot be deleted if there are pending claims in the category
+
+all claim data should stay
+
+when logging in as am employee user can only see their claims
+
+admins can view ALL claims
+
+both admins and employees can filter the claims list by status:
+	- pending
+	- approved
+	- denied
+
+last claim submitted should be at the top of the page
+
+when an admin approves or denies a claim they can add a comment that the employee can see
+
+a nice to have would be the ability to download the report as a .csv file or a .pdf
+
+pages should load within 3 seconds
+
+strong emphasis on UEX
+
+goals:
+	create a secure web for employees to submit expense claims
+	create an admin dashboard for managing employees and claims and viewing reports
+	deploying to a cloud service
+	purely for tracking, no money transfer
