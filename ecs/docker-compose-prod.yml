@@ -13,7 +13,7 @@ services:
       - "27017:27017"
     networks:
       - linkednetwork
-            
+
   app:
     build:
       context: ./
@@ -32,13 +32,13 @@ services:
     depends_on:
       - mongo
     environment:
-      - NODE_ENV=production      
+      - NODE_ENV=production
     networks:
-      - linkednetwork  
+      - linkednetwork
 
 volumes:
-    node_modules_app:
-    data-volume:
+  node_modules_app:
+  data-volume:
 
 networks:
   linkednetwork:
