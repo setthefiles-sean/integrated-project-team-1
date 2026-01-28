@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { signUp } from "@/src/app/lib/auth-client";
+import { authClient } from "@/src/app/lib/auth-client";
 
 // a page for testing sign ups via the client. I will remove it later --@Max
 export default function RegisterForm() {
@@ -13,7 +13,7 @@ export default function RegisterForm() {
   const onSubmit = async () => {
     let registerJson = { email: email, name: username, password: password };
 
-    let response = await signUp.email(registerJson);
+    let response = await authClient.signUp.email(registerJson);
 
     if (response.error) {
       setError(response.error.message || "Something went wrong.");
