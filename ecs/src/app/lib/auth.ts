@@ -15,7 +15,7 @@ export const auth = betterAuth({
     enabled: true,
   },
   // allow the backend to connect from our vercel app or dev server
-  allowedOrigins: [
+  trustedOrigins: [
     "http://localhost:3000",
     "https://integrated-project-team-1-beta.vercel.app",
   ],
