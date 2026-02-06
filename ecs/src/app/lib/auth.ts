@@ -19,4 +19,14 @@ export const auth = betterAuth({
     "http://localhost:3000",
     "https://integrated-project-team-1-beta.vercel.app",
   ],
+  user: {
+      additionalFields: {
+        role: {
+          type: 'string',
+          required: true,
+          defaultValue: 'employee',
+
+        }
+      }
+  }
 });
