@@ -1,3 +1,5 @@
+import { ObjectId } from "mongodb";
+
 export interface Users {
     users: User[];
 }
@@ -16,7 +18,7 @@ export interface Claims{
 }
 
 export interface Claim {
-    _id: string | Object;
+    _id: string | ObjectId;
     category: Category;
     description: string;
     amount: number;
@@ -30,7 +32,7 @@ export interface Categories {
 }
 
 export interface Category {
-    _id:    string | Object;
+    _id:    string | ObjectId;
     name:   string;
     default:    boolean;
 }

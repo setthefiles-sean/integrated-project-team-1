@@ -1,4 +1,4 @@
-import { Collection, DeleteResult, MongoClient, ObjectId } from "mongodb";
+import { Collection, DeleteResult, Filter, MongoClient, ObjectId, WithId } from "mongodb";
 import { NextRequest, NextResponse } from "next/server";
 import sanitizeHtml from 'sanitize-html'
 import { Category, User } from "./data.model";
@@ -75,4 +75,37 @@ export async function getCategories() {
         mongoClient.close()
     }
         return categoryArray;
+}
+
+
+// query the database and delete the requested category by it's object ID
+export async function deleteCategory(request: NextRequest) {
+    let mongoClient: MongoClient = new MongoClient(MONGO_URL);
+    
+    // select the category based on its object ID
+    try {
+        await mongoClient.connect();
+        // grab the category ID from the request body
+        const body: any = await request.json();
+        let categoryID : ObjectId = new ObjectId(sanitizeHtml(body._id));
+
+        let categoryCollection:Collection<Category> = mongoClient.db(MONGO_DB_NAME).collection<Category>(MONGO_COLLECTION_CATEGORY);
+
+        // delete only if id exists and category is not a default
+        let result: WithId<Category> | null = await categoryCollection.findOneAndDelete({"id_": categoryID, "default" : false})
+
+        // check if deleted correctly
+        if (result == null ) {
+            return NextResponse.json({error: "No Category found with that ID, or category is default"}, {status: 404});
+        } else {
+            // status code for deleted
+            return NextResponse.json(result, {status: 200});
+        }
+    } catch (error:any) {
+        return NextResponse.json({error: error.message}, {status: 500});
+    } finally {
+        mongoClient.close();
+    }
+
+        
 }
