@@ -37,7 +37,9 @@ export async function deleteUser(request: NextRequest) {
         const body: any = await request.json();
         let employeeID: ObjectId = new ObjectId(sanitizeHtml(body._id));
 
-        let result: DeleteResult = await mongoClient.db(MONGO_DB_NAME).collection<User>(MONGO_COLLECTION_USER).deleteOne(employeeID);
+        let userCollection:Collection<User> = mongoClient.db(MONGO_DB_NAME).collection<User>(MONGO_COLLECTION_USER);
+        let selector:Object = { "_id": employeeID };
+        let result: DeleteResult = await userCollection.deleteOne(selector);
 
         // check if deleted correctly
         if (result.deletedCount <= 0) {
