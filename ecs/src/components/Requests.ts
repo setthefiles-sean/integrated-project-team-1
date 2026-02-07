@@ -1,4 +1,4 @@
-import { Collection, DeleteResult, Filter, MongoClient, ObjectId, WithId } from "mongodb";
+import { Collection, DeleteResult, Filter, InsertOneResult, MongoClient, ObjectId, WithId } from "mongodb";
 import { NextRequest, NextResponse } from "next/server";
 import sanitizeHtml from 'sanitize-html'
 import { Category, User } from "./data.model";
@@ -92,7 +92,7 @@ export async function deleteCategory(request: NextRequest) {
         let categoryCollection:Collection<Category> = mongoClient.db(MONGO_DB_NAME).collection<Category>(MONGO_COLLECTION_CATEGORY);
 
         // delete only if id exists and category is not a default
-        let result: WithId<Category> | null = await categoryCollection.findOneAndDelete({"id_": categoryID, "default" : false})
+        let result: WithId<Category> | null = await categoryCollection.findOneAndDelete({"_id": categoryID, "default" : false})
 
         // check if deleted correctly
         if (result == null ) {
@@ -108,4 +108,36 @@ export async function deleteCategory(request: NextRequest) {
     }
 
         
+}
+
+export async function createCategory(request: NextRequest) {
+    let mongoClient: MongoClient = new MongoClient(MONGO_URL);
+
+    // create a category using the body of the response
+    try {
+        await mongoClient.connect(); 				
+        const body:any = await request.json();
+
+        if (body.name == ""){
+            return NextResponse.json({error: "Category Name is required"}, {status: 404});
+        }
+
+		body.name = sanitizeHtml(body.name);
+        // hard code the default parameter to false
+        body.default = false;
+
+        let search:Category | null = await mongoClient.db(MONGO_DB_NAME).collection<Category>(MONGO_COLLECTION_CATEGORY).findOne({name: body.name});
+
+        if (search != null) {
+            return NextResponse.json({error: "A Category already exists with that name"}, {status: 406});
+        }
+
+        let result:InsertOneResult = await mongoClient.db(MONGO_DB_NAME).collection<Category>(MONGO_COLLECTION_CATEGORY).insertOne(body);
+
+        return NextResponse.json(result, {status: 200});
+    } catch (error:any) {
+        return NextResponse.json({error: error.message}, {status: 500});
+    } finally {
+        mongoClient.close();
+    }
 }
